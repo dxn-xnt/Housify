@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'AirBnBreeze') - Find Your Perfect Stay</title>
+    <title>@yield('title', 'Housify') - Find Your Perfect Stay</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -17,9 +17,10 @@
     <!-- Additional Styles -->
     @stack('styles')
 </head>
-<body class="font-montserrat">
-    <!-- Header (includes sticky search bar functionality) -->
-    @if(!\Request::is('bookings*', 'property/create*'))
+<body class="font-raleway">
+    @if(request()->is('/'))
+        <x-layout.home-header />
+    @else
         <x-layout.header />
     @endif
 

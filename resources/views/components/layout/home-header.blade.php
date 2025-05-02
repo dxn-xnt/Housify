@@ -1,4 +1,4 @@
-<header class="bg-housify-light text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full border-housify-darkest">
+<header class="bg-housify-light text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="flex items-center gap-2">
         <span class="font-dm-serif-display text-[28px] font-normal text-dark-red">Housify</span>
