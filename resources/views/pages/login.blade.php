@@ -13,14 +13,47 @@
                     <button class="text-xl font-bold">&times;</button>
                 </div>
 
-                <form>
-                    <input type="text" placeholder="Phone Number"
+                <form action="{{ route('user.login') }}" method="POST">
+                    @csrf
+                    <input type="text" name="user_email" placeholder="Email Address"
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
-                    <input type="password" placeholder="Password"
+                    @if ($errors->has('user_email'))
+                        <p class="text-red-500 text-xs">{{ $errors->first('user_email') }}</p>
+                    @endif
+                    <input type="password" name="user_password" placeholder="Password"
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
-
+                    @if ($errors->has('user_password'))
+                        <p class="text-red-500 text-xs">{{ $errors->first('user_password') }}</p>
+                    @endif
                     <button class="bg-housify-dark text-housify-light w-full py-2 rounded-sm font-semibold">LOG IN</button>
                 </form>
+
+                @if ($errors->any())
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        // Display error messages using SweetAlert
+                        @foreach ($errors->all() as $error)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "{{ addslashes($error) }}",
+                        });
+                        @endforeach
+                    </script>
+                @endif
+
+                @if (session('success'))
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        // Display success message using SweetAlert
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: "{{ addslashes(session('success')) }}",
+                        });
+                    </script>
+                @endif
+
 
                 <div class="flex justify-end mt-1 text-xs underline cursor-pointer" @click="form = 'forgot'">Forgot
                     password?</div>
