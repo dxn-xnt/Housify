@@ -12,7 +12,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+
+        // Wala pay views/HTML
+        // return view('types.index', compact('types'));
     }
 
     /**
@@ -20,7 +23,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        // Wala pay views/HTML
+        // return view('types.create');
     }
 
     /**
@@ -28,7 +32,11 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'type_name' => 'required|string|max:255',
+        ]);
+
+        Type::create($validated);
     }
 
     /**
@@ -36,7 +44,8 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        // Wala pay views
+        // return view('property_types.show', compact('type'));
     }
 
     /**
@@ -44,7 +53,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        // Wala pay views
+        // return view('types.edit', compact('type'));
     }
 
     /**
@@ -52,7 +62,14 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $validated = $request->validate([
+            'type_name' => 'required|string|max:255',
+        ]);
+
+        $type->update($validated);
+
+        return redirect()->route('type.index')
+            ->with('success', 'Review updated successfully!');
     }
 
     /**
@@ -60,6 +77,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        // Wala pay views
+        // return redirect()->route('type.index');
     }
 }
