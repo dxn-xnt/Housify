@@ -8,14 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        'airbnb-light': '#E3EED4',
-        'airbnb-dark': '#375534',
-        'airbnb-darkest': '#0F2A1D',
-        'gold': '#F6B002',
+        'housify-light': '#DFD0B8',
+        'housify-mid': '#948979',
+        'housify-dark': '#393E46',
+        'housify-darkest': '#222831',
+        'dark-red': '#8E1616',
       },
       fontFamily: {
-        'righteous': ['Righteous', 'cursive'],
-        'montserrat': ['Montserrat', 'sans-serif'],
+        'raleway': ['Raleway', 'sans-serif',],
+        'dm-serif-display' : ['DM Sans', 'serif',],
       },
     },
   },

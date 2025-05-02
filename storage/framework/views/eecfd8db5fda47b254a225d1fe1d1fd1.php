@@ -35,4 +35,4 @@
         </div>
     </div>
 </header>
-<?php /**PATH C:\xampp\htdocs\AirBnBreeze\resources\views/components/layout/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\AirBnBreeze\resources\views/components/layout/home-header.blade.php ENDPATH**/ ?>
