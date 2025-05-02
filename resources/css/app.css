@@ -1,17 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-
 @layer base {
     html {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Raleway', 'DM Serif Display', sans-serif;
     }
 
     body {
-        @apply bg-airbnb-light text-gray-800;
+        @apply bg-housify-light text-gray-800;
     }
 }
 
@@ -21,15 +21,15 @@
     }
 
     .btn-primary {
-        @apply bg-airbnb-darkest text-airbnb-light hover:bg-opacity-90;
+        @apply bg-housify-darkest text-housify-light hover:bg-opacity-90;
     }
 
     .btn-outline {
-        @apply border border-current text-airbnb-light hover:bg-opacity-10 hover:bg-white;
+        @apply border border-current text-housify-light hover:bg-opacity-10 hover:bg-white;
     }
 
     .card {
-        @apply bg-airbnb-light rounded-2xl border-[1.5px] border-airbnb-darkest overflow-hidden relative shadow-md;
+        @apply bg-housify-light rounded-sm border-[1.5px] border-housify-darkest overflow-hidden relative shadow-lg;
     }
 
     .input-field {
@@ -37,6 +37,6 @@
     }
 
     .filter-icon {
-        @apply w-7 h-7 flex items-center justify-center flex-shrink-0;
+        @apply w-7 h-7 flex items-center justify-center flex-shrink-0 text-housify-darkest border-housify-darkest;
     }
 }

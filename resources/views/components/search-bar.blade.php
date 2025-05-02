@@ -1,46 +1,83 @@
-<div class="relative z-10 w-full">
-    <div class="flex bg-airbnb-light rounded-full py-2 px-3 shadow-[0_15px_10px_-10px_rgba(0,0,0,0.5)] justify-between items-center max-w-[1350px] mx-auto">
-        <!-- Location -->
-        <div class="px-4 border-r border-[#383131] flex-1">
-            <label class="block text-sm mb-0.5 text-[#6e7672]">Place Location</label>
-            <div class="flex items-center gap-2">
-                <i class="w-7 h-7 text-airbnb-darkest" data-lucide="map-pin"></i>
-                <input type="text" placeholder="Cebu City, Cebu" class="input-field text-xl font-medium">
+<div x-data="{ scrolled: false }"
+     @scroll.window="scrolled = window.scrollY > 100"
+     class="relative z-50 transition-all duration-75">
+
+    <!-- Main Search Container -->
+    <div class="sticky top-4 mx-auto transition-all duration-75 ease-out"
+         :class="{
+         'w-full px-4 pt-[150px]' : !scrolled,
+         'w-[85%] pt-[20px]': scrolled
+       }">
+
+        <!-- Search Bar -->
+        <div class="flex bg-housify-light rounded-full border-housify-darkest border-[1px] py-2 px-3 shadow-md justify-between items-center max-w-[1350px] mx-auto transition-all duration-300"
+             :class="{
+           'py-2': !scrolled,
+           'py-1': scrolled
+         }">
+
+            <!-- Location (compresses on scroll) -->
+            <div class="px-4 border-r border-housify-darkest transition-all duration-75"
+                 :class="{
+                     'flex-1': !scrolled,
+                     'w-[22%]': scrolled
+                   }">
+                <label class="block text-sm mb-0.5 text-housify-dark">Location</label>
+                <div class="flex items-center gap-2">
+                    <i class="w-7 h-7 text-housify-darkest" data-lucide="map-pin"></i>
+                    <input type="text" placeholder="Enter location" class="input-field text-xl font-medium text-housify-darkest">
+                </div>
             </div>
-        </div>
-        
-        <!-- Arrival Date -->
-        <div class="px-4 border-r border-[#383131] flex-1">
-            <label class="block text-sm mb-0.5 text-[#6e7672]">Arrival Date</label>
-            <div class="flex items-center gap-2">
-                <i class="w-7 h-7 text-airbnb-darkest" data-lucide="calendar"></i>
-                <input type="text" value="24/06/25" class="input-field text-xl font-semibold">
+
+            <!-- Arrival Date (compresses on scroll) -->
+            <div class="px-4 border-r border-housify-darkest transition-all duration-75"
+                 :class="{
+                     'flex-1': !scrolled,
+                     'w-[18%]': scrolled
+                   }">
+                <label class="block text-sm mb-0.5 text-housify-dark">Arrival Date</label>
+                <div class="flex items-center gap-2">
+                    <i class="w-7 h-7 text-housify-darkest" data-lucide="calendar"></i>
+                    <input type="text" value="24/06/25" class="input-field text-xl font-semibold">
+                </div>
             </div>
-        </div>
-        
-        <!-- Departure Date -->
-        <div class="px-4 border-r border-[#383131] flex-1">
-            <label class="block text-sm mb-0.5 text-[#6e7672]">Departure Date</label>
-            <div class="flex items-center gap-2">
-                <i class="w-7 h-7 text-airbnb-darkest" data-lucide="calendar"></i>
-                <input type="text" value="24/06/25" class="input-field text-xl font-semibold">
+
+            <!-- Departure Date (compresses on scroll) -->
+            <div class="px-4 border-r border-housify-darkest transition-all duration-75"
+                 :class="{
+                     'flex-1': !scrolled,
+                     'w-[18%]': scrolled
+                   }">
+                <label class="block text-sm mb-0.5 text-housify-dark">Departure Date</label>
+                <div class="flex items-center gap-2">
+                    <i class="w-7 h-7 text-housify-darkest" data-lucide="calendar"></i>
+                    <input type="text" value="24/06/25" class="input-field text-xl font-semibold">
+                </div>
             </div>
-        </div>
-        
-        <!-- Room & Guests -->
-        <div class="px-4 border-r border-[#383131] flex-1">
-            <label class="block text-sm mb-0.5 text-[#6e7672]">Room & Guests</label>
-            <div class="flex items-center gap-2">
-                <i class="w-7 h-7 text-airbnb-darkest" data-lucide="door-open"></i>
-                <input type="text" value="2" class="w-[30px] text-center bg-transparent border-none outline-none text-xl font-semibold mr-[10px]">
-                <i class="w-7 h-7 text-airbnb-darkest" data-lucide="users"></i>
-                <input type="text" value="5" class="w-[30px] text-center bg-transparent border-none outline-none text-xl font-semibold mr-[10px]">
+
+            <!-- Room & Guests (compresses on scroll) -->
+            <div class="px-4 border-r border-housify-darkest transition-all duration-75"
+                 :class="{
+                     'flex-1': !scrolled,
+                     'w-[22%]': scrolled
+                   }">
+                <label class="block text-sm mb-0.5 text-housify-dark">Room & Guests</label>
+                <div class="flex items-center gap-2">
+                    <i class="w-7 h-7 text-housify-darkest" data-lucide="door-open"></i>
+                    <input type="text" value="2" class="w-[30px] text-center bg-transparent border-none outline-none text-xl font-semibold mr-[10px]">
+                    <i class="w-7 h-7 text-housify-darkest" data-lucide="users"></i>
+                    <input type="text" value="5" class="w-[30px] text-center bg-transparent border-none outline-none text-xl font-semibold mr-[10px]">
+                </div>
             </div>
+
+            <!-- Search Button (stays consistent) -->
+            <button class="bg-housify-darkest text-housify-light border-none py-3 px-6 rounded-full text-lg font-medium cursor-pointer ml-[10px] min-w-[150px] transition-all duration-300"
+                    :class="{
+                'py-3': !scrolled,
+                'py-2': scrolled
+              }">
+                Search
+            </button>
         </div>
-        
-        <!-- Search Button -->
-        <button class="bg-airbnb-darkest text-airbnb-light border-none py-3 px-6 rounded-full text-lg font-medium cursor-pointer ml-[10px] min-w-[150px]">
-            Search
-        </button>
     </div>
 </div>

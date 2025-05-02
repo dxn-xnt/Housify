@@ -4,7 +4,7 @@
         <img src="<?php echo e(asset('assets/images/air-logo.png')); ?>" alt="AirBnBreeze Logo" class="h-[50px] w-[50px] border border-airbnb-light rounded-full object-cover">
         <span class="font-righteous text-[28px] font-normal text-airbnb-light">AirBnBreeze</span>
     </a>
-    
+
 <!-- Search Bar and Filters -->
 <div class="flex items-center max-w-5xl w-full justify-center">
     <!-- Search Input -->
@@ -14,13 +14,13 @@
             <span class="text-xl font-medium">Cebu City</span>
         </button>
         <div class="border-r border-gray-900 h-12 my-auto"></div>
-        
+
         <button class="flex items-center gap-1 bg-transparent py-1.5 px-4 rounded-full text-airbnb-darkest">
             <i class="w-5 h-5 mr-1" data-lucide="calendar"></i>
             <span class="text-xl font-medium">24/06/25 - 30/06/25</span>
         </button>
         <div class="border-r border-gray-900 h-12 my-auto"></div>
-        
+
         <button class="flex items-center bg-transparent py-1.5 px-4 rounded-full text-airbnb-darkest">
             <div class="flex items-center gap-1">
                 <i class="w-5 h-5 mr-1" data-lucide="door-open"></i>
@@ -32,7 +32,7 @@
             </div>
         </button>
         <div class="border-r border-gray-900 h-12 my-auto"></div>
-        
+
         <button class="bg-airbnb-darkest text-airbnb-light p-2 rounded-full ml-2 mr-2">
             <i class="w-5 h-5" data-lucide="search"></i>
         </button>
@@ -50,17 +50,17 @@
 
     <!-- Menu with Alpine.js -->
     <div class="relative" x-data="{ open: false }">
-        <button 
-            @click="open = !open" 
+        <button
+            @click="open = !open"
             @click.away="open = false"
             class="flex items-center gap-2 bg-airbnb-dark border border-airbnb-light rounded-full px-[10px] py-[5px] hover:bg-opacity-90 shadow-[0_6px_16px_-2px_rgba(0,0,0,0.3)]"
         >
             <i class="w-[25px] h-[25px] text-airbnb-light" data-lucide="menu"></i>
             <i class="w-[25px] h-[25px] text-airbnb-light" data-lucide="user-circle"></i>
         </button>
-        
-        <div 
-            x-show="open" 
+
+        <div
+            x-show="open"
             x-transition:enter="transition ease-out duration-200"
             x-transition:enter-start="opacity-0 scale-95"
             x-transition:enter-end="opacity-100 scale-100"
@@ -79,4 +79,4 @@
             <a href="<?php echo e(route('bookings.index')); ?>" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Help Center</a>
         </div>
     </div>
-</header><?php /**PATH C:\xampp\htdocs\AirBnBreeze\resources\views/components/layout/bookings-header.blade.php ENDPATH**/ ?>
+</header><?php /**PATH C:\xampp\htdocs\AirBnBreeze\resources\views/components/layout/home-home-header.blade.php ENDPATH**/ ?>
