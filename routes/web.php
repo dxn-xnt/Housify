@@ -25,7 +25,9 @@ Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancel'])->name
 
 // Adding properties
 Route::get('/property/create/step1', [PropertyController::class, 'createProperty'])->name('property.create');
-
+Route::get('/property/create/step2', [PropertyController::class, 'createProperty'])->name('property.create');
+Route::get('/property/create/step3', [PropertyController::class, 'createProperty'])->name('property.create');
+Route::get('/property/create/step4', [PropertyController::class, 'createProperty'])->name('property.create');
 
 
 // Fallback route
