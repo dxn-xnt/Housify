@@ -28,6 +28,12 @@ Route::get('/bookings/{id}', [BookingController::class, 'show'])->name('bookings
 Route::post('/property/{id}/book', [BookingController::class, 'book'])->name('bookings.book');
 Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
 
+// Adding properties
+Route::get('/property/create/step1', [PropertyController::class, 'createProperty'])->name('property.create');
+Route::get('/property/create/step2', [PropertyController::class, 'createProperty'])->name('property.create');
+Route::get('/property/create/step3', [PropertyController::class, 'createProperty'])->name('property.create');
+Route::get('/property/create/step4', [PropertyController::class, 'createProperty'])->name('property.create');
+
 // Fallback route
 Route::fallback(function () {
     return view('pages.404');
