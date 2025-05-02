@@ -18,7 +18,7 @@ class Property extends Model
         'prop_status',
         'prop_address',
         'prop_date_created',
-        'user_host_id'
+        'user_id'
     ];
     public function user(){
         return $this->belongsTo(User::class,'user_id');
