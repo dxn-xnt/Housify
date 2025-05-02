@@ -21,7 +21,7 @@ class PropertyAmenityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PropertyAmenity $propertyAmenity)
+    public function shows(PropertyAmenity $propertyAmenity)
     {
         // Wala pay views
         return view('PropertyAmenity.show', compact('propertyAmenity'));
