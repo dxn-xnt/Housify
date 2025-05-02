@@ -10,17 +10,20 @@
             <div x-show="form === 'signup'">
                 <h2 class="text-lg font-semibold mb-4">Sign up to <span class="font-bold">AirBnBreeze</span></h2>
 
-                <form>
-                    <input type="text" placeholder="First Name"
+                <form action="{{ route('user.create') }}" method="POST">
+                    @csrf <!-- Laravel CSRF token -->
+                    <input type="text" name="user_fname" placeholder="First Name"
                            class="w-full px-4 py-2 mb-3 rounded-md border border-[#3B4F39] bg-[#DCE5D2] text-[#3B4F39] placeholder-[#3B4F39] focus:outline-none">
-                    <input type="text" placeholder="Last Name"
+                    <input type="text" name="user_lname" placeholder="Last Name"
                            class="w-full px-4 py-2 mb-3 rounded-md border border-[#3B4F39] bg-[#DCE5D2] text-[#3B4F39] placeholder-[#3B4F39] focus:outline-none">
-                    <input type="text" placeholder="Phone Number"
+                    <input type="text" name="user_contact_number" placeholder="Phone Number"
                            class="w-full px-4 py-2 mb-3 rounded-md border border-[#3B4F39] bg-[#DCE5D2] text-[#3B4F39] placeholder-[#3B4F39] focus:outline-none">
-                    <input type="password" placeholder="Password"
+                    <input type="text" name="user_email" placeholder="Email Address"
+                           class="w-full px-4 py-2 mb-3 rounded-md border border-[#3B4F39] bg-[#DCE5D2] text-[#3B4F39] placeholder-[#3B4F39] focus:outline-none">
+                    <input type="password" name="user_password" placeholder="Password"
                            class="w-full px-4 py-2 mb-3 rounded-md border border-[#3B4F39] bg-[#DCE5D2] text-[#3B4F39] placeholder-[#3B4F39] focus:outline-none">
 
-                    <button class="bg-[#3B4F39] text-white w-full py-2 rounded-md font-semibold">SIGN UP</button>
+                    <button type="submit" class="bg-[#3B4F39] text-white w-full py-2 rounded-md font-semibold">SIGN UP</button>
                 </form>
 
                 <div class="flex items-center justify-center my-2 text-xs text-gray-600">
