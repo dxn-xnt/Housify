@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyAmenity extends Model
 {
-    protected $table = 'property_amenity';
-    protected $primaryKey = 'prop_id';
-    protected $fillable = [
-        'amn_id'
-    ];
-    public function amenity(){
-        return $this->belongsTo(Amenity::class,'amn_id');
+    protected $table = 'property_amenities';
+    protected $primaryKey = 'amenity_id';
+    protected $fillable = ['prop_id', 'name', 'icon'];
+
+    public function property()
+    {
+        return $this->belongsTo(Property::class, 'prop_id');
     }
-    public $timestamps = false;
 }
