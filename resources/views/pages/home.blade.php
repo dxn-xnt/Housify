@@ -5,7 +5,7 @@
 @section('content')
     <x-layout.filter-search />
     <!-- Main Content -->
-    <div class="relative w-full mt-28">
+    <div class="relative w-full mt-28 bg-housify-lightest">
         <!-- Listings Section -->
         <section class="w-full px-8 md:px-14">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-9 gap-y-12 mb-8 max-w-[1750px] mx-auto">

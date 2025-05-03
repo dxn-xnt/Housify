@@ -1,4 +1,4 @@
-<header class="bg-housify-light text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full">
+<header class="bg-housify-lightest text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="flex items-center gap-2">
         <span class="font-dm-serif-display text-[28px] font-normal text-dark-red">Housify</span>
@@ -13,7 +13,7 @@
         <button
             @click="open = !open"
             @click.away="open = false"
-            class="flex items-center gap-2 bg-housify-light border-[1px] border-housify-darkest rounded-full px-[10px] py-[5px] hover:bg-opacity-90 shadow-xl"
+            class="flex items-center gap-2 bg-housify-lightest border-[1px] border-housify-darkest rounded-full px-[10px] py-[5px] hover:bg-opacity-90 shadow-xl"
         >
             <i class="w-[20px] h-[20px] text-housify-darkest" data-lucide="menu"></i>
             <i class="w-[25px] h-[25px] text-housify-darkest" data-lucide="user-circle"></i>

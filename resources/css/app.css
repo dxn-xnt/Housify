@@ -11,7 +11,7 @@
     }
 
     body {
-        @apply bg-housify-light text-gray-800;
+        @apply bg-housify-lightest text-gray-800;
     }
 }
 

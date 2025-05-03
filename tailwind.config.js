@@ -8,6 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'housify-lightest': '#F5E7D3',
         'housify-light': '#DFD0B8',
         'housify-mid': '#948979',
         'housify-dark': '#393E46',
