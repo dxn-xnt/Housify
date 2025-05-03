@@ -9,6 +9,7 @@ return array(
     'App\\Http\\Controllers\\AmenityController' => $baseDir . '/app/Http/Controllers/AmenityController.php',
     'App\\Http\\Controllers\\BookingController' => $baseDir . '/app/Http/Controllers/BookingController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\LogInController' => $baseDir . '/app/Http/Controllers/LogInController.php',
     'App\\Http\\Controllers\\PropertyAmenityController' => $baseDir . '/app/Http/Controllers/PropertyAmenityController.php',
     'App\\Http\\Controllers\\PropertyController' => $baseDir . '/app/Http/Controllers/PropertyController.php',
     'App\\Http\\Controllers\\PropertyTypeController' => $baseDir . '/app/Http/Controllers/PropertyTypeController.php',
