@@ -101,7 +101,7 @@
     </div>
 
     <!-- Things to Know -->
-    <div class="max-w-[1750px] mx-auto px-8 md:px-32 py-6 mb-12 bg-housify-light rounded-2xl">
+    <div class="max-w-[1750px] mx-auto px-8 md:px-32 py-6 mb-12 bg-housify-lightest rounded-2xl">
         <h2 class="text-[22px] font-semibold mb-6 text-housify-darkest">Things to know</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
