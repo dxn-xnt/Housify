@@ -2,7 +2,7 @@
          @scroll.window="scrolled = window.scrollY > 50"
          class="sticky top-0 z-40 w-full transition-all duration-75">
 
-    <div class="flex justify-center bg-housify-light py-4 pb-4 mt-[-90px] w-full transition-all duration-75"
+    <div class="flex justify-center bg-housify-lightest py-4 pb-4 mt-[-90px] w-full transition-all duration-75"
          :class="{
             'pt-[5.5rem] shadow-md': scrolled,
             'pt-40' : !scrolled

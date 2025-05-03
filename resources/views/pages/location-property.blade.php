@@ -5,12 +5,12 @@
 <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto">
         <h1 class="text-2xl font-bold text-gray-900 mb-8">Step 1: Identify your property</h1>
-        
+
         <div class="bg-white shadow rounded-lg overflow-hidden">
             <!-- Address Section -->
             <div class="p-6 border-b border-gray-200">
                 <h2 class="text-lg font-medium text-gray-900 mb-4">Add the address of the property</h2>
-                
+
                 <form id="addressForm">
                     <div class="grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-6">
                         <!-- Sweet Address -->
@@ -47,7 +47,7 @@
             <!-- Location Pinning Section -->
             <div class="p-6 border-b border-gray-200">
                 <h2 class="text-lg font-medium text-gray-900 mb-4">Pin the location</h2>
-                
+
                 <!-- Location Search -->
                 <div class="mb-4">
                     <label for="location_search" class="block text-sm font-medium text-gray-700">Search Location</label>
@@ -89,7 +89,7 @@
 
             <!-- Navigation -->
             <div class="bg-gray-50 px-6 py-4 flex justify-between">
-                <a href="{{ route('properties.step1') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Back
                 </a>
                 <button type="button" id="saveLocationBtn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -111,7 +111,7 @@
 
     function initMap() {
         geocoder = new google.maps.Geocoder();
-        
+
         // Initialize map
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: -34.397, lng: 150.644 },
@@ -140,7 +140,7 @@
             // Center map on selected location
             map.setCenter(place.geometry.location);
             map.setZoom(15);
-            
+
             // Place marker
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
@@ -165,7 +165,7 @@
         // Get each component of the address from the place details
         for (const component of place.address_components) {
             const componentType = component.types[0];
-            
+
             switch (componentType) {
                 case "street_number":
                     document.getElementById("street_address").value = `${component.long_name} ${document.getElementById("street_address").value}`;
@@ -199,7 +199,7 @@
         button.addEventListener('click', function() {
             const location = this.getAttribute('data-location');
             document.getElementById('location_search').value = location;
-            
+
             // Trigger geocode for this location
             geocoder.geocode({ address: location }, (results, status) => {
                 if (status === "OK" && results[0]) {
@@ -224,7 +224,7 @@
             lat: marker.getPosition().lat(),
             lng: marker.getPosition().lng()
         };
-        
+
         console.log('Form data to submit:', formData);
         // In a real app, you would use fetch() or axios to send this to your backend
         alert('Location saved! Proceeding to next step...');

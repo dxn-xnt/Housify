@@ -1,4 +1,4 @@
-<header class="bg-housify-light text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full shadow-sm">
+<header class="bg-housify-lightest text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full shadow-sm">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="flex items-center gap-2">
         <img src="{{ asset('assets/images/air-logo.png') }}" alt="AirBnBreeze Logo" class="h-[50px] w-[50px] border border-housify-light rounded-full object-cover">

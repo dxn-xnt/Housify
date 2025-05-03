@@ -10,7 +10,7 @@
        }">
 
         <!-- Search Bar -->
-        <div class="flex bg-housify-light rounded-full border-housify-darkest border-[1px] py-2 px-3 shadow-md justify-between items-center max-w-[1350px] mx-auto transition-all duration-300"
+        <div class="flex bg-housify-lightest rounded-full border-housify-darkest border-[1px] py-2 px-3 shadow-md justify-between items-center max-w-[1350px] mx-auto transition-all duration-300"
              :class="{
            'py-2': !scrolled,
            'py-1': scrolled

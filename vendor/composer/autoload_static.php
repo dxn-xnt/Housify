@@ -524,6 +524,7 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\AmenityController' => __DIR__ . '/../..' . '/app/Http/Controllers/AmenityController.php',
         'App\\Http\\Controllers\\BookingController' => __DIR__ . '/../..' . '/app/Http/Controllers/BookingController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\LogInController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogInController.php',
         'App\\Http\\Controllers\\PropertyAmenityController' => __DIR__ . '/../..' . '/app/Http/Controllers/PropertyAmenityController.php',
         'App\\Http\\Controllers\\PropertyController' => __DIR__ . '/../..' . '/app/Http/Controllers/PropertyController.php',
         'App\\Http\\Controllers\\PropertyTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/PropertyTypeController.php',
