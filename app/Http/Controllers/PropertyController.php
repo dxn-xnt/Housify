@@ -134,7 +134,8 @@ class PropertyController extends Controller
 
     public function createProperty_step1()
     {
-        return view('pages.identify-property');
+        $types = Type::all();
+        return view('pages.identify-property', compact('types'));
     }
 
     public function createProperty_step2()
@@ -149,7 +150,9 @@ class PropertyController extends Controller
     {
         return view('pages.amenities-highlights');
     }public function createProperty_step5()
-{
-    return view('pages.pictures-highlights');
-}
+    {
+        return view('pages.pictures-highlights');
+    }
+
+
 }

@@ -30,6 +30,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bookings/{id}', [BookingController::class, 'show'])->name('bookings.show');
     Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
 
+// Adding properties
+Route::get('/property/create/step1', [PropertyController::class, 'createProperty_step1'])->name('property.create.step1');
+Route::get('/property/create/step2', [PropertyController::class, 'createProperty_step2'])->name('property.create.step2');
+Route::get('/property/create/step3', [PropertyController::class, 'createProperty_step3'])->name('property.create.step3');
+Route::get('/property/create/step4', [PropertyController::class, 'createProperty_step4'])->name('property.create.step4');
+Route::get('/property/create/step5', [PropertyController::class, 'createProperty_step5'])->name('property.create.step5');
+Route::get('/property/create/step6', [PropertyController::class, 'createProperty_step6'])->name('property.create.step6');
     // Logout
     Route::post('/logout', [LogInController::class, 'logout'])->name('logout');
 });

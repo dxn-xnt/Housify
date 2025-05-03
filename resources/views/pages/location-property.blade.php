@@ -2,7 +2,61 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div></div>
+
+    <!-- Main Content -->
+    <div class="relative w-full h-full mt-28 mb-10 bg-housify-lightest gap-2">
+        <div class="pl-44">
+            <div>
+                <h2 class="text-left text-3xl font-extrabold text-gray-900">
+                    Step 1: Identify your property
+                </h2>
+            </div>
+
+            <div class="flex justify-start gap-2 pt-5">
+                <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Property Type</div>
+                <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Location</div>
+                <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Capacity</div>
+            </div>
+        </div>
+
+
+        <div class="m-auto w-full max-w-screen-lg px-8">
+            <div class="bg-transparent py-8 px-4 sm:px-10 max-w-[1750px] mx-auto">
+                <form class="space-y-6" action="#" method="POST">
+                    @csrf
+
+                    <!-- Property Type Selection -->
+                    <div >
+                        <label class="block text-xl font-medium text-housify-darkest mb-2">Property type</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            @foreach($types as $type)
+                                <x-option-item :type="$type" />
+                            @endforeach
+                        </div>
+                        @error('property_type')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="relative flex justify-between px-44 pt-52">
+            <a href="{{ url()->previous() }}" class="min-w-[150px] inline-flex justify-center py-2 px-4 border-[1px] border-housify-darkest shadow-sm text-lg font-medium rounded-sm text-housify-darkest bg-housify-light hover:bg-housify-lightest focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-lightest">
+                Back
+            </a>
+            <button type="submit" class="min-w-[150px] inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-sm text-housify-light bg-housify-darkest hover:bg-housify-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-dark">
+                Next
+            </button>
+        </div>
+    </div>
+
+
+
+
+<div class="relative w-full mt-28 bg-housify-lightest">
     <div class="max-w-3xl mx-auto">
         <h1 class="text-2xl font-bold text-gray-900 mb-8">Step 1: Identify your property</h1>
 
@@ -43,44 +97,6 @@
                     </div>
                 </form>
             </div>
-
-            <!-- Location Pinning Section -->
-            <div class="p-6 border-b border-gray-200">
-                <h2 class="text-lg font-medium text-gray-900 mb-4">Pin the location</h2>
-
-                <!-- Location Search -->
-                <div class="mb-4">
-                    <label for="location_search" class="block text-sm font-medium text-gray-700">Search Location</label>
-                    <div class="mt-1 relative rounded-md shadow-sm">
-                        <input type="text" id="location_search" name="location_search"
-                               class="block w-full pr-10 border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                               placeholder="Search for a location...">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Suggested Locations -->
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Suggested Locations</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        @foreach(['Auckland', 'Kalamazoo', 'Ghana', 'Phoenix', 'Cuba City', 'Tunisia', 'Northern', 'Hamura'] as $location)
-                            <button type="button" class="location-suggestion text-xs px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
-                                    data-location="{{ $location }}">
-                                {{ $location }}
-                            </button>
-                        @endforeach
-                    </div>
-                </div>
-
-                <!-- Google Map Container -->
-                <div id="map-container" class="h-64 w-full rounded-md overflow-hidden border border-gray-300">
-                    <div id="map" class="h-full w-full"></div>
-                </div>
-
                 <!-- Location Privacy Notice -->
                 <p class="mt-4 text-xs text-gray-500">
                     Check location is only shared with guests after they've made a reservation.
@@ -99,144 +115,4 @@
         </div>
     </div>
 </div>
-
-<!-- Google Maps API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap" async defer></script>
-
-<script>
-    let map;
-    let marker;
-    let autocomplete;
-    let geocoder;
-
-    function initMap() {
-        geocoder = new google.maps.Geocoder();
-
-        // Initialize map
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8,
-        });
-
-        // Initialize marker
-        marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
-        });
-
-        // Initialize autocomplete for location search
-        autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById("location_search"),
-            { types: ["geocode"] }
-        );
-
-        // When place is selected from autocomplete
-        autocomplete.addListener("place_changed", () => {
-            const place = autocomplete.getPlace();
-            if (!place.geometry) {
-                return;
-            }
-
-            // Center map on selected location
-            map.setCenter(place.geometry.location);
-            map.setZoom(15);
-
-            // Place marker
-            marker.setPosition(place.geometry.location);
-            marker.setVisible(true);
-
-            // Fill address fields
-            fillInAddress(place);
-        });
-
-        // When marker is dragged
-        marker.addListener("dragend", () => {
-            geocodePosition(marker.getPosition());
-        });
-
-        // When map is clicked
-        map.addListener("click", (event) => {
-            marker.setPosition(event.latLng);
-            geocodePosition(event.latLng);
-        });
-    }
-
-    function fillInAddress(place) {
-        // Get each component of the address from the place details
-        for (const component of place.address_components) {
-            const componentType = component.types[0];
-
-            switch (componentType) {
-                case "street_number":
-                    document.getElementById("street_address").value = `${component.long_name} ${document.getElementById("street_address").value}`;
-                    break;
-                case "route":
-                    document.getElementById("street_address").value += component.long_name;
-                    break;
-                case "locality":
-                    document.getElementById("city").value = component.long_name;
-                    break;
-                case "administrative_area_level_1":
-                    document.getElementById("province").value = component.long_name;
-                    break;
-                case "postal_code":
-                    document.getElementById("zip_code").value = component.long_name;
-                    break;
-            }
-        }
-    }
-
-    function geocodePosition(pos) {
-        geocoder.geocode({ location: pos }, (results, status) => {
-            if (status === "OK" && results[0]) {
-                fillInAddress(results[0]);
-            }
-        });
-    }
-
-    // Handle suggested location clicks
-    document.querySelectorAll('.location-suggestion').forEach(button => {
-        button.addEventListener('click', function() {
-            const location = this.getAttribute('data-location');
-            document.getElementById('location_search').value = location;
-
-            // Trigger geocode for this location
-            geocoder.geocode({ address: location }, (results, status) => {
-                if (status === "OK" && results[0]) {
-                    map.setCenter(results[0].geometry.location);
-                    map.setZoom(12);
-                    marker.setPosition(results[0].geometry.location);
-                    marker.setVisible(true);
-                    fillInAddress(results[0]);
-                }
-            });
-        });
-    });
-
-    // Handle form submission
-    document.getElementById('saveLocationBtn').addEventListener('click', function() {
-        // Here you would typically submit the form data to your backend
-        const formData = {
-            street_address: document.getElementById('street_address').value,
-            city: document.getElementById('city').value,
-            zip_code: document.getElementById('zip_code').value,
-            province: document.getElementById('province').value,
-            lat: marker.getPosition().lat(),
-            lng: marker.getPosition().lng()
-        };
-
-        console.log('Form data to submit:', formData);
-        // In a real app, you would use fetch() or axios to send this to your backend
-        alert('Location saved! Proceeding to next step...');
-    });
-</script>
-
-<style>
-    .location-suggestion {
-        transition: all 0.2s ease;
-    }
-    .location-suggestion:hover {
-        background-color: #f3f4f6;
-    }
-</style>
 @endsection
