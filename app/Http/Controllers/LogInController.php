@@ -18,8 +18,8 @@ class LogInController extends Controller
         // Attempt authentication with custom field names
         if (Auth::attempt([
             'user_email' => $credentials['user_email'],
-            'password' => $credentials['user_password'] // Note: 'password' key is required for Auth
-        ], $request->remember)) { // Optional remember me
+            'password' => $credentials['user_password']
+        ], $request->remember)) {
             $request->session()->regenerate();
 
             // Redirect to intended URL or property creation

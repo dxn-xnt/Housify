@@ -3,6 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div class="flex items-center justify-center h-screen">
         <div x-data="{ form: 'login' }"
              class="bg-housify-light p-6 rounded-sm border-[1.5px] border-housify-darkest shadow-md w-full max-w-sm text-sm text-housify-darkest font-medium mx-auto">
@@ -29,7 +30,6 @@
                 </form>
 
                 @if ($errors->any())
-                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     <script>
                         // Display error messages using SweetAlert
                         @foreach ($errors->all() as $error)

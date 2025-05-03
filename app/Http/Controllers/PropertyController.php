@@ -131,4 +131,25 @@ class PropertyController extends Controller
 
         return view('pages.property-details', compact('property'));
     }
+
+    public function createProperty_step1()
+    {
+        return view('pages.identify-property');
+    }
+
+    public function createProperty_step2()
+    {
+        return view('pages.location-property');
+    }
+    public function createProperty_step3()
+    {
+        return view('pages.description-highlights');
+    }
+    public function createProperty_step4()
+    {
+        return view('pages.amenities-highlights');
+    }public function createProperty_step5()
+{
+    return view('pages.pictures-highlights');
+}
 }
