@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -66,7 +65,7 @@ class PropertyController extends Controller
             ],
         ];
 
-        return view('pages.property-details', compact('properties'));
+        return view('pages.home', compact('properties'));
     }
 
     // Display the property details page
