@@ -7,28 +7,31 @@
    <div></div>
 
     <!-- Main Content -->
-    <div class="relative w-full h-screen mt-28 bg-housify-lightest ">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <h2 class="text-center text-3xl font-extrabold text-gray-900">
-                Step 1: Identify your property
-            </h2>
+    <div class="relative w-full h-full mt-28 mb-10 bg-housify-lightest gap-2">
+        <div class="pl-44">
+            <div>
+                <h2 class="text-left text-3xl font-extrabold text-gray-900">
+                    Step 1: Identify your property
+                </h2>
+            </div>
+
+            <div class="flex justify-start gap-2 pt-5">
+                <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Property Type</div>
+                <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Location</div>
+                <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Capacity</div>
+            </div>
         </div>
 
-        <div class="flex justify-start gap-2">
-            <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Property Type</div>
-            <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Location</div>
-            <div class="p-2 border-[1px] border-housify-darkest rounded-sm text-housify-darkest">Capacity</div>
-        </div>
 
-        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-8 md:px-14">
-            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 max-w-[1750px] mx-auto">
+        <div class="m-auto w-full max-w-screen-lg px-8">
+            <div class="bg-transparent py-8 px-4 sm:px-10 max-w-[1750px] mx-auto">
                 <form class="space-y-6" action="#" method="POST">
                     @csrf
 
                     <!-- Property Type Selection -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Property type</label>
-                        <div class="grid grid-cols-2 gap-3">
+                    <div >
+                        <label class="block text-xl font-medium text-housify-darkest mb-2">Property type</label>
+                        <div class="grid grid-cols-3 gap-3">
                             @foreach($types as $type)
                                 <x-option-item :type="$type" />
                             @endforeach
@@ -37,18 +40,18 @@
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
-                    <!-- Navigation Buttons -->
-                    <div class="flex justify-between">
-                        <a href="{{ url()->previous() }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                            Back
-                        </a>
-                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Next
-                        </button>
-                    </div>
                 </form>
             </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="relative flex justify-between px-44 pt-52">
+            <a href="{{ url()->previous() }}" class="min-w-[150px] inline-flex justify-center py-2 px-4 border-[1px] border-housify-darkest shadow-sm text-lg font-medium rounded-sm text-housify-darkest bg-housify-light hover:bg-housify-lightest focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-lightest">
+                Back
+            </a>
+            <button type="submit" class="min-w-[150px] inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-sm text-housify-light bg-housify-darkest hover:bg-housify-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-dark">
+                Next
+            </button>
         </div>
     </div>
 

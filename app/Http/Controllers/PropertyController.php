@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -134,7 +135,7 @@ class PropertyController extends Controller
 
     public function createProperty_step1()
     {
-        $types = TypeController::class -> getAllTypes();
+        $types = Type::all();
         return view('pages.identify-property', compact('types'));
     }
 
