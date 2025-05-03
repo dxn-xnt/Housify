@@ -16,6 +16,8 @@ return array(
     'App\\Http\\Controllers\\ReviewController' => $baseDir . '/app/Http/Controllers/ReviewController.php',
     'App\\Http\\Controllers\\TypeController' => $baseDir . '/app/Http/Controllers/TypeController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
+    'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Models\\Amenity' => $baseDir . '/app/Models/Amenity.php',
     'App\\Models\\Booking' => $baseDir . '/app/Models/Booking.php',
     'App\\Models\\Images' => $baseDir . '/app/Models/Images.php',

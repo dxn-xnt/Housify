@@ -10,28 +10,33 @@ class LogInController extends Controller
 {
     public function login(Request $request)
     {
-        // Validate the input data
         $credentials = $request->validate([
-            'user_email' => 'required|string|email|max:50',
-            'user_password' => 'required|string|min:6|max:100',
+            'user_email' => 'required|email',
+            'user_password' => 'required|string|min:6'
         ]);
 
-        // Check if the email exists in the database
-        $user = User::where('user_email', $credentials['user_email'])->first();
+        // Attempt authentication with custom field names
+        if (Auth::attempt([
+            'user_email' => $credentials['user_email'],
+            'password' => $credentials['user_password'] // Note: 'password' key is required for Auth
+        ], $request->remember)) { // Optional remember me
+            $request->session()->regenerate();
 
-        if (!$user) {
-            return back()->withErrors(['user_email' => 'Email does not exist.'])->onlyInput('user_email');
+            // Redirect to intended URL or property creation
+            return redirect()->intended(route('property.create'));
         }
 
-        // Verify the password
-        if (!\Illuminate\Support\Facades\Hash::check($credentials['user_password'], $user->user_password)) {
-            return back()->withErrors(['user_password' => 'Invalid password.'])->onlyInput('user_email');
-        }
-
-        // Log the user in
-        Auth::login($user);
-
-        // Redirect to the home route
-        return redirect()->route('home')->with('success', 'Login successful!');
+        return back()->withErrors([
+            'user_email' => 'Invalid credentials',
+        ])->onlyInput('user_email');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
 }

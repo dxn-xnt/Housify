@@ -3,6 +3,7 @@
     <a href="{{ route('home') }}" class="flex items-center gap-2">
         <span class="font-dm-serif-display text-[28px] font-normal text-dark-red">Housify</span>
     </a>
+
     <!-- Search Section -->
     <section class="mb-5 relative z-10 w-full">
         <x-search-bar />
@@ -30,11 +31,31 @@
             class="absolute top-12 right-0 bg-housify-light border-housify-darkest border-[0.5px] text-housify-dark rounded-sm shadow-lg min-w-[230px] p-2 z-10"
             style="display: none;"
         >
-            <a href="{{ route('login') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Log in</a>
-            <a href="{{ route('signup') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Sign up</a>
-            <a href="{{ route('login') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">AirBnB your house</a>
-            <a href="{{ route('login') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">About us</a>
-            <a href="{{ route('login') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Help Center</a>
+            @auth
+                <!-- Show when logged in -->
+                <div class="px-2 py-1 border-b border-gray-200">
+                    <p class="font-medium">Hi, {{ auth()->user()->user_fname }}!</p>
+                </div>
+                <a href="{{ route('property.create') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">AirBnB your house</a>
+                <a href="{{ route('bookings.index') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">My Bookings</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-left block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Log out</button>
+                </form>
+            @else
+                <!-- Show when guest -->
+                <a href="{{ route('login') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Log in</a>
+                <a href="{{ route('signup') }}" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Sign up</a>
+                <a href="{{ route('login') }}"
+                   onclick="sessionStorage.setItem('property_creation_intent', true)"
+                   class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">AirBnB your house</a>
+            @endauth
+
+            <!-- Common links for all users -->
+            <div class="border-t border-gray-200 mt-1 pt-1">
+                <a href="#" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">About us</a>
+                <a href="#" class="block py-[0.35rem] px-2 text-gray-800 hover:bg-[#FBFFF6] rounded font-medium">Help Center</a>
+            </div>
         </div>
     </div>
 </header>

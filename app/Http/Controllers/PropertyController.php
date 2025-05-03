@@ -66,7 +66,7 @@ class PropertyController extends Controller
             ],
         ];
 
-        return view('pages.home', compact('properties'));
+        return view('pages.property-details', compact('properties'));
     }
 
     // Display the property details page

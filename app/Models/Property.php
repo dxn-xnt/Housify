@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -18,9 +17,21 @@ class Property extends Model
         'prop_status',
         'prop_address',
         'prop_date_created',
-        'user_id'
+        'user_id',
+        'main_image_path',
+        'gallery_image_1',
+        'gallery_image_2',
+        'gallery_image_3',
+        'gallery_image_4'
     ];
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+
+    public function host()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function amenities()
+    {
+        return $this->hasMany(PropertyAmenity::class, 'prop_id');
     }
 }
