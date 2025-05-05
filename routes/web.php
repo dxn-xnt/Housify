@@ -17,7 +17,12 @@ Route::middleware(['guest'])->group(function () {
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
     // Property Creation Flow
-
+    Route::prefix('property/create')->group(function () {
+        Route::get('/step1', [PropertyController::class, 'createProperty_step1'])->name('property.create');
+        Route::get('/step2', [PropertyController::class, 'createProperty_step2'])->name('property.step2');
+        Route::get('/step3', [PropertyController::class, 'createProperty_step3'])->name('property.step3');
+        Route::get('/step4', [PropertyController::class, 'createProperty_step4'])->name('property.step4');
+    });
 
     // Booking Routes
     Route::post('/property/{id}/book', [BookingController::class, 'book'])->name('bookings.book');

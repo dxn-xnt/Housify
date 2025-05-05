@@ -16,7 +16,7 @@ class TypeController extends Controller
         $types = Type::select('type_id', 'type_name', 'icon_name')->get();
 
         // Pass the data to the view (if needed)
-        return view('pages.identify-property', compact('types'));
+        return view('types.index', compact('types'));
     }
 
     /**
