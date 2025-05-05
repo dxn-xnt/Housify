@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amenity;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -144,15 +146,27 @@ class PropertyController extends Controller
     }
     public function createProperty_step3()
     {
-        return view('pages.description-highlights');
+        return view('pages.capacity-property');
     }
     public function createProperty_step4()
     {
-        return view('pages.amenities-highlights');
-    }public function createProperty_step5()
+        return view('pages.description-highlights');
+    }
+    public function createProperty_step5()
+    {
+        $controller = new AmenityController();
+        $amenities = $controller->getAllAmenities();
+//        $amenities = Amenity::All();
+        return view('pages.amenities-highlights', compact('amenities'));
+    }
+    public function createProperty_step6()
     {
         return view('pages.pictures-highlights');
     }
 
+    public function createProperty_step7()
+    {
+        return view('pages.price-highlights');
+    }
 
 }
