@@ -2,23 +2,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-indigo-600 mb-2">AirBnBreeze</h1>
-            <h2 class="text-xl font-semibold text-gray-900">Step 1: Identify your property</h2>
-            <p class="mt-2 text-sm text-gray-600">Property price • Location • Capacity</p>
+    <div class="relative w-full h-full mt-28 mb-10 bg-housify-lightest gap-2">
+        <div class="px-[8%]">
+            <div>
+                <h2 class="text-left text-3xl font-extrabold text-gray-900">
+                    Step 1: Identify your property
+                </h2>
+            </div>
+
+            <div class="flex justify-start gap-2 pt-5">
+                <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Property Type</div>
+                <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Location</div>
+                <div class="p-2 border-[1px] border-housify-darkest bg-housify-darkest rounded-sm text-housify-light">Capacity</div>
+            </div>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+
+        <div class="m-auto w-full max-w-screen-sm px-8">
             <!-- Capacity Configuration -->
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Configure property capacity</h3>
-                
+            <div class="px-6 py-8 border-b border-gray-200">
+                <h3 class="text-xl font-medium text-gray-900 mb-4">Configure property capacity</h3>
+
                 <!-- Backrooms Counter -->
                 <div class="flex items-center justify-between py-3">
                     <div>
-                        <h4 class="text-sm font-medium text-gray-700">Backrooms</h4>
+                        <h4 class="text-md font-medium text-gray-700">Backrooms</h4>
                     </div>
                     <div class="flex items-center">
                         <button type="button" onclick="decrement('backrooms')" class="counter-btn">
@@ -38,7 +46,7 @@
                 <!-- Guests Counter -->
                 <div class="flex items-center justify-between py-3 border-t border-gray-200">
                     <div>
-                        <h4 class="text-sm font-medium text-gray-700">Guests</h4>
+                        <h4 class="text-md font-medium text-gray-700">Guests</h4>
                     </div>
                     <div class="flex items-center">
                         <button type="button" onclick="decrement('guests')" class="counter-btn">
@@ -58,7 +66,7 @@
                 <!-- Bathrooms Counter -->
                 <div class="flex items-center justify-between py-3 border-t border-gray-200">
                     <div>
-                        <h4 class="text-sm font-medium text-gray-700">Bathrooms</h4>
+                        <h4 class="text-md font-medium text-gray-700">Bathrooms</h4>
                     </div>
                     <div class="flex items-center">
                         <button type="button" onclick="decrement('bathrooms')" class="counter-btn">
@@ -75,27 +83,18 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Navigation Buttons -->
-            <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row justify-between space-y-3 sm:space-y-0">
-                <button type="button" onclick="window.location.href='{{ route('properties.step1') }}'" class="back-btn">
-                    Back
-                </button>
-                <div class="flex space-x-3">
-                    <button type="button" onclick="cancelChanges()" class="cancel-btn">
-                        Cancel
-                    </button>
-                    <button type="button" onclick="saveAndExit()" class="save-exit-btn">
-                        Save & Exit
-                    </button>
-                    <button type="button" onclick="saveAndContinue()" class="next-btn">
-                        Next
-                    </button>
-                </div>
-            </div>
+        <!-- Navigation Buttons -->
+        <div class="relative flex justify-between px-[8%] pt-[232px]">
+            <a href="{{ url()->previous() }}" class="min-w-[150px] inline-flex justify-center py-2 px-4 border-[1px] border-housify-darkest shadow-sm text-lg font-medium rounded-sm text-housify-darkest bg-housify-light hover:bg-housify-lightest focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-lightest">
+                Back
+            </a>
+            <button type="submit" class="min-w-[150px] inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-medium rounded-sm text-housify-light bg-housify-darkest hover:bg-housify-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-dark">
+                Next
+            </button>
         </div>
     </div>
-</div>
 
 <script>
     // Initialize counters
@@ -123,52 +122,6 @@
             updateCounter(id);
         }
     }
-
-    // Cancel changes
-    function cancelChanges() {
-        if (confirm('Are you sure you want to cancel? All changes will be lost.')) {
-            // Reset all counters
-            for (const key in counters) {
-                counters[key] = 0;
-                updateCounter(key);
-            }
-        }
-    }
-
-    // Save and exit
-    function saveAndExit() {
-        saveData();
-        alert('Your changes have been saved!');
-        window.location.href = '/'; // Redirect to home
-    }
-
-    // Save and continue
-    function saveAndContinue() {
-        saveData();
-        window.location.href = '{{ route("properties.step2") }}';
-    }
-
-    function saveData() {
-        console.log('Saving data:', counters);
-      
-    }
 </script>
 
-<style>
-    .counter-btn {
-        @apply h-8 w-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500;
-    }
-    .back-btn {
-        @apply inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
-    }
-    .cancel-btn {
-        @apply inline-flex items-center px-4 py-2 border border-red-300 shadow-sm text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
-    }
-    .save-exit-btn {
-        @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
-    }
-    .next-btn {
-        @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500;
-    }
-</style>
 @endsection

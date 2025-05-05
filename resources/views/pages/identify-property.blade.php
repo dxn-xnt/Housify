@@ -8,7 +8,7 @@
 
     <!-- Main Content -->
     <div class="relative w-full h-full mt-28 mb-10 bg-housify-lightest gap-2">
-        <div class="pl-44">
+        <div class="px-[8%]">
             <div>
                 <h2 class="text-left text-3xl font-extrabold text-gray-900">
                     Step 1: Identify your property
@@ -25,7 +25,7 @@
 
         <div class="m-auto w-full max-w-screen-lg px-8">
             <div class="bg-transparent py-8 px-4 sm:px-10 max-w-[1750px] mx-auto">
-                <form class="space-y-6" action="#" method="POST">
+                <form action="#" method="POST">
                     @csrf
 
                     <!-- Property Type Selection -->
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Navigation Buttons -->
-        <div class="relative flex justify-between px-44 pt-52">
+        <div class="relative flex justify-between px-[8%] pt-60">
             <a href="{{ url()->previous() }}" class="min-w-[150px] inline-flex justify-center py-2 px-4 border-[1px] border-housify-darkest shadow-sm text-lg font-medium rounded-sm text-housify-darkest bg-housify-light hover:bg-housify-lightest focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-housify-lightest">
                 Back
             </a>
@@ -54,37 +54,4 @@
             </button>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add visual feedback when property type is selected
-            const propertyTypeInputs = document.querySelectorAll('input[name="property_type"]');
-            propertyTypeInputs.forEach(input => {
-                input.addEventListener('change', function() {
-                    // Remove all selected styles first
-                    document.querySelectorAll('label[for^="property_type_"]').forEach(label => {
-                        label.classList.remove('peer-checked:border-indigo-500', 'peer-checked:bg-indigo-50', 'peer-checked:text-indigo-700');
-                    });
-
-                    // Add to the selected one
-                    if (this.checked) {
-                        const label = document.querySelector(`label[for="${this.id}"]`);
-                        label.classList.add('peer-checked:border-indigo-500', 'peer-checked:bg-indigo-50', 'peer-checked:text-indigo-700');
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
-
-@push('styles')
-    <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-@endpush

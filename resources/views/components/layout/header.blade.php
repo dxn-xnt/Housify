@@ -1,7 +1,6 @@
 <header class="bg-housify-lightest text-housify-darkest py-3 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-20 w-full shadow-sm">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="flex items-center gap-2">
-        <img src="{{ asset('assets/images/air-logo.png') }}" alt="AirBnBreeze Logo" class="h-[50px] w-[50px] border border-housify-light rounded-full object-cover">
         <span class="font-dm-serif-display text-[28px] font-normal text-dark-red">Housify</span>
     </a>
 
@@ -14,7 +13,7 @@
 <div class="flex items-center gap-4">
     <!-- Bell Icon -->
     <div class="relative">
-        <i class="w-[25px] h-[25px] text-housify-light" data-lucide="bell"></i>
+        <i class="w-[25px] h-[25px] text-housify-darkest" data-lucide="bell"></i>
         <!-- notification badge -->
         <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
     </div>
@@ -24,10 +23,10 @@
         <button
             @click="open = !open"
             @click.away="open = false"
-            class="flex items-center gap-2 bg-housify-dark border border-housify-light rounded-full px-[10px] py-[5px] hover:bg-opacity-90 shadow-[0_6px_16px_-2px_rgba(0,0,0,0.3)]"
+            class="flex items-center gap-2 bg-housify-lightest border border-housify-darkest rounded-full px-[10px] py-[5px] hover:bg-opacity-90 shadow-md"
         >
-            <i class="w-[25px] h-[25px] text-housify-light" data-lucide="menu"></i>
-            <i class="w-[25px] h-[25px] text-housify-light" data-lucide="user-circle"></i>
+            <i class="w-[25px] h-[25px] text-housify-darkest" data-lucide="menu"></i>
+            <i class="w-[25px] h-[25px] text-housify-darkest" data-lucide="user-circle"></i>
         </button>
 
         <div
