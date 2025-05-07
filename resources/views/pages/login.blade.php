@@ -66,8 +66,8 @@
 
                 <div class="text-center">
                     <p class="text-xs mb-1">Don't have an account?</p>
-                    <button @click="form = 'signup'"
-                            class="w-full border border-housify-darkest py-2 rounded-sm font-semibold text-housify-darkest">SIGN UP</button>
+                    <a href="{{ route('signup') }}"
+                       class="block w-full border border-housify-darkest py-2 rounded-sm font-semibold text-housify-darkest text-center">SIGN UP</a>
                 </div>
             </div>
 

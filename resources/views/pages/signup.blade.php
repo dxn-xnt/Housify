@@ -19,7 +19,7 @@
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
                     <input type="text" name="user_contact_number" placeholder="Phone Number"
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
-                    <input type="text" name="user_email" placeholder="Email Address"
+                    <input type="text" name="user_email" placeholder="Email  Address"
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
                     <input type="password" name="user_password" placeholder="Password"
                            class="w-full px-4 py-2 mb-3 rounded-sm border border-housify-darkest bg-housify-light text-housify-darkest placeholder-housify-dark focus:outline-none">
@@ -100,9 +100,9 @@
                 </div>
 
                 <div class="text-center">
-                    <p class="text-xs mb-1">Already have an account?</p>
-                    <button @click="form = 'login'"
-                            class="w-full border border-housify-dark py-2 rounded-sm font-semibold text-housify-dark">LOG IN</button>
+                    <p class="text-xs mb-1">Already have an account</p>
+                    <a href="{{ route('login') }}"
+                       class="block w-full border border-housify-darkest py-2 rounded-sm font-semibold text-housify-darkest text-center">LOG IN</a>
                 </div>
             </div>
 

@@ -1,4 +1,3 @@
-{{-- resources/views/properties/step3-amenities.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -20,32 +19,48 @@
         <div class="m-auto w-full max-w-screen-md px-8 py-2">
             <!-- Amenities Sections -->
             <div class="p-6 space-y-8">
-                <!-- Basic Amenities -->
+
+                <!-- Basic Amenities (BA) -->
                 <div>
                     <h3 class="text-xl font-medium text-gray-900 mb-4">Identify basic amenities</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        @foreach($amenities as $amenity)
-                            <x-option-item :type="$amenity"/>
+                        @foreach($amenities->get('BA', []) as $amenity)
+                            <x-option-item
+                                :type="[
+                                'icon_name' => $amenity->amn_icon,
+                                'type_name' => $amenity->amn_name
+                            ]"
+                            />
                         @endforeach
                     </div>
                 </div>
 
-                <!-- Standout Amenities -->
+                <!-- Standout Amenities (SA) -->
                 <div>
                     <h3 class="text-xl font-medium text-gray-900 mb-4">Identify standout amenities</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        @foreach($amenities as $amenity)
-                            <x-option-item :type="$amenity"/>
+                        @foreach($amenities->get('SA', []) as $amenity)
+                            <x-option-item
+                                :type="[
+                                'icon_name' => $amenity->amn_icon,
+                                'type_name' => $amenity->amn_name
+                            ]"
+                            />
                         @endforeach
                     </div>
                 </div>
 
-                <!-- Safety Items -->
+                <!-- Safety Items (SI) -->
                 <div>
                     <h3 class="text-xl font-medium text-gray-900 mb-4">Identify safety items</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        @foreach($amenities as $amenity)
-                            <x-option-item :type="$amenity"/>
+                        @foreach($amenities->get('SI', []) as $amenity)
+                            <x-option-item
+                                :type="[
+                                'icon_name' => $amenity->amn_icon,
+                                'type_name' => $amenity->amn_name
+                            ]"
+                            />
                         @endforeach
                     </div>
                 </div>
@@ -63,9 +78,7 @@
                         </button>
                     </div>
                     <div id="custom_amenities_list" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div class="amenity-item" data-amenity="stockify_products">
-                            <input type="checkbox" id="other_stockify" class="hidden peer" checked>
-                        </div>
+                        <!-- Dynamic custom amenities will be added here -->
                     </div>
                 </div>
             </div>
@@ -82,19 +95,18 @@
         </div>
     </div>
 
-<script>
-    // Add custom amenity
-    function addCustomAmenity() {
-        const input = document.getElementById('custom_amenity');
-        const value = input.value.trim();
+    <script>
+        function addCustomAmenity() {
+            const input = document.getElementById('custom_amenity');
+            const value = input.value.trim();
 
-        if (value) {
-            const id = 'custom_' + value.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+            if (value) {
+                const id = 'custom_' + value.toLowerCase().replace(/[^a-z0-9]+/g, '_');
 
-            const amenityItem = document.createElement('div');
-            amenityItem.className = 'amenity-item';
-            amenityItem.dataset.amenity = id;
-            amenityItem.innerHTML = `
+                const amenityItem = document.createElement('div');
+                amenityItem.className = 'amenity-item';
+                amenityItem.dataset.amenity = id;
+                amenityItem.innerHTML = `
                 <input type="checkbox" id="${id}" class="hidden peer" checked>
                 <label for="${id}"
                        class="block px-4 py-2 border rounded-md text-sm font-medium text-center cursor-pointer peer-checked:bg-green-100 peer-checked:border-green-300 peer-checked:text-green-800 hover:bg-gray-50">
@@ -102,9 +114,9 @@
                 </label>
             `;
 
-            document.getElementById('custom_amenities_list').appendChild(amenityItem);
-            input.value = '';
+                document.getElementById('custom_amenities_list').appendChild(amenityItem);
+                input.value = '';
+            }
         }
-    }
-</script>
+    </script>
 @endsection

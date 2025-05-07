@@ -5,6 +5,8 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\LogInController;
 
+Route::get('/', [PropertyController::class, 'index'])->name('home');
+
 // Public Routes
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [UserController::class, 'showLogin'])->name('login');
@@ -31,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
 
     // Public Property Views
-    Route::get('/', [PropertyController::class, 'index'])->name('home');
     Route::get('/property/{id}', [PropertyController::class, 'show'])->name('property.show');
 
 
