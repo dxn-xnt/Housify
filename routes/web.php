@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\PropertyCreationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
@@ -18,14 +20,6 @@ Route::middleware(['guest'])->group(function () {
 
 // Authenticated Routes
 Route::middleware(['auth'])->group(function () {
-    // Property Creation Flow
-    Route::prefix('property/create')->group(function () {
-        Route::get('/step1', [PropertyController::class, 'createProperty_step1'])->name('property.create');
-        Route::get('/step2', [PropertyController::class, 'createProperty_step2'])->name('property.step2');
-        Route::get('/step3', [PropertyController::class, 'createProperty_step3'])->name('property.step3');
-        Route::get('/step4', [PropertyController::class, 'createProperty_step4'])->name('property.step4');
-    });
-
     // Booking Routes
     Route::post('/property/{id}/book', [BookingController::class, 'book'])->name('bookings.book');
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
@@ -40,13 +34,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('property/create')->group(function () {
-    Route::get('/identify-house', [PropertyController::class, 'createProperty_step1'])->name('property.create');
-    Route::get('/location', [PropertyController::class, 'createProperty_step2'])->name('property.step2');
-    Route::get('/capacity', [PropertyController::class, 'createProperty_step3'])->name('property.step3');
-    Route::get('/description', [PropertyController::class, 'createProperty_step4'])->name('property.step4');
-    Route::get('/amenities', [PropertyController::class, 'createProperty_step5'])->name('property.step5');
-    Route::get('/pictures', [PropertyController::class, 'createProperty_step6'])->name('property.step6');
-    Route::get('/price', [PropertyController::class, 'createProperty_step7'])->name('property.step7');
+    Route::get('/identify-house', [PropertyCreationController::class, 'createProperty_step1'])->name('property.create');
+    Route::get('/location', [PropertyCreationController::class, 'createProperty_step2'])->name('property.step2');
+    Route::get('/capacity', [PropertyCreationController::class, 'createProperty_step3'])->name('property.step3');
+    Route::get('/description', [PropertyCreationController::class, 'createProperty_step4'])->name('property.step4');
+    Route::get('/amenities', [PropertyCreationController::class, 'createProperty_step5'])->name('property.step5');
+    Route::get('/pictures', [PropertyCreationController::class, 'createProperty_step6'])->name('property.step6');
+    Route::get('/price', [PropertyCreationController::class, 'createProperty_step7'])->name('property.step7');
 });
 
 // Fallback route
