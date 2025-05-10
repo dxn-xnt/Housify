@@ -15,6 +15,7 @@ class UserController extends Controller
     {
         return view('pages.login');
     }
+
     public function showSignUp()
     {
         return view('pages.signup');

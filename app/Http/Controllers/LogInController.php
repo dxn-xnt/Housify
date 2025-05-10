@@ -23,7 +23,7 @@ class LogInController extends Controller
             $request->session()->regenerate();
 
             // Redirect to intended URL or property creation
-            return redirect()->intended(route('property.create'));
+            return redirect()->intended(route('home'));
         }
 
         return back()->withErrors([

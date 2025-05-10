@@ -6,6 +6,8 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 
+// Step 5: Show amenities form
+
 class PropertyTypeController extends Controller
 {
     /**

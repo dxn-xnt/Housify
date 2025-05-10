@@ -17,12 +17,7 @@ class Property extends Model
         'prop_status',
         'prop_address',
         'prop_date_created',
-        'user_id',
-        'main_image_path',
-        'gallery_image_1',
-        'gallery_image_2',
-        'gallery_image_3',
-        'gallery_image_4'
+        'user_id'
     ];
 
     public function host()
